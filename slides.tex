@@ -4,12 +4,27 @@
 \title{ATAR Notes Specialist Maths Term 1 Lecture}
 \author{Stephen Zhang}
 
+\usepackage{pgfpages}
 \renewcommand{\d}{\hspace{0.2cm}\text{d}}
 
+\setbeamertemplate
+{footline}{\quad\hfill\insertframenumber\strut\quad\quad\quad} 
 \begin{document}
+
+\mode<handout>{\setbeamercolor{background canvas}{bg=black!20}}
+\pgfpagesuselayout{2 on 1}[a4paper]
+
 
 \begin{frame}
 	\titlepage
+\end{frame}
+
+\begin{frame}{Plan for today}
+	\begin{itemize}
+		\item \textbf{Session 1} \textbf{Vectors} and \textbf{Complex Numbers Part 1}
+		\item \textbf{Session 2} \textbf{Complex Numbers Part II} and \textbf{Calculus intro}
+		\item \textbf{Session 3} \textbf{More calculus} ... than you'll ever want to know
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{What's up?}
@@ -36,7 +51,7 @@
 \begin{frame}{I present you this...}
 	\includegraphics[width = \linewidth]{img/quote1.png}\\
 	From \textit{S. Thompson, Calculus Made Easy (1914)}
-\end{frame}
+ \end{frame}
 
 \begin{frame}{So strap yourselves in...}
 	\begin{center}
@@ -65,7 +80,7 @@
 \end{frame}
 
 \begin{frame}
-	\textbf{Example:} Plot the ellipse with equation:
+	\textbf{Example 1:} Plot the ellipse with equation:
 	$\dfrac{x^2}{3} + \dfrac{y^2}{4} = 1$
 	Hence, draw the hyperbola with equation:
 	$\dfrac{x^2}{3} - \dfrac{y^2}{4} = 1$
@@ -87,7 +102,7 @@
 \subsection{Vectors}
 \begin{frame}{Vectors}
 \begin{itemize}
-	\item Recall that \textbf{vectors} are mathematical objects that are \textbf{groups} of numbers.
+	\item \textbf{Vectors} are a general class of mathematical objects that satisfy some expected properties. \textbf{For our purposes}, vectors can be treated as just 'arrows'
 	\item \textbf{Vectors} are special because they satisfy a very specific set of properties - they come from \textbf{vector spaces}, e.g. $\mathbb{R}^2, \mathbb{R}^3$
 	\item \textbf{Geometric interpretation:} vectors are directed line segments with a \textbf{head} and \textbf{tail}
 \end{itemize}
@@ -122,7 +137,7 @@
 	
 	$$|\vec{u}| = \sqrt{\vec{u}\cdot\vec{u}}$$
 	
-	The scalar product we are using is the \textbf{Euclidean} inner product. There are other strange beasts out there, though.
+	The scalar product we are using is the \textbf{Euclidean} inner product. There are other strange beasts out there, though, that give us \textit{distorted} concepts of length.
 \end{frame}
 
 \begin{frame}{Vector toolbox}
@@ -189,15 +204,15 @@
 \end{frame}
 
 \begin{frame}{Linear independence}
-	\textbf{Any} set of vectors will either be linearly \textbf{dependent} or otherwise \textbf{independent}.
+	\textbf{Any} set of vectors will either be linearly \textbf{dependent} or otherwise \textbf{independent}.\\~\\
 	
-	\textbf{Formal definition}
+	\textbf{Formal definition}\\~\\
 	
 	$\vec{a}, \vec{b}, \vec{c}$ are \textbf{linearly dependent} if there exists $k_1, k_2, k_3$ \textbf{not all zero} such that:
 	
 	$$k_1\vec{a} + k_2\vec{b} + k_3\vec{c} = \vec{0}$$
 	
-	\textbf{Practical definition}
+	\textbf{Practical definition}\\~\\
 	
 	$\vec{a}, \vec{b}, \vec{c}$ are \textbf{linearly dependent} if we can write \textbf{one vector} as a \textbf{linear combination} of the others.
 	
@@ -241,6 +256,18 @@
 \end{frame}
 
 \begin{frame}
+	\textbf{A trick for nerds}\\~\\
+	Consider the vectors $\vec{a} = (a_1, a_2, a_3),\quad\vec{b} = (b_1, b_2, b_3),\quad\vec{c} = (c_1, c_2, c_3)$.
+	\\~\\
+	\begin{center}$\vec{a}, \vec{b}, \vec{c}$ are \textbf{linearly independent} \textit{if and only if}\end{center}
+	
+	$$\begin{vmatrix}a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3
+	\end{vmatrix} = 0$$
+	
+	This determinant is easy to check using a CAS.
+\end{frame}
+
+\begin{frame}
 	Example: VCAA 2009 Exam 1
 	\includegraphics[width = \linewidth]{img/q2.png}
 \end{frame}
@@ -249,13 +276,30 @@
 
 	\textbf{Challenge problem}
 	\\~\\
-	Using vector projections, find the point on the line $y = 3x - 2$ that is closest to the point $(4, 2)$. 
+	Using vector projections, find the point on the line $y = 3x$ that is closest to the point $(4, 2)$. 
 	What is the minimal distance between the point $(4, 2)$ and the line?	
 	
 	\vspace{5cm}
-	
-	% (8/5, 14/5), and distance is 4sqrt(10)/5
 
+\end{frame}
+
+\begin{frame}{Vector proofs}
+	\textbf{Vector proofs} involve a wide range of techniques, but in general...\\~\\
+	\begin{itemize}
+		\item We represent vectors using a \textbf{general notation} e.g. $\vec{a}$, \textbf{not} not in component ($\vec{i},\vec{j},\vec{k}$) form.
+		\item \textbf{Dot product} is one of the most valuable tools you have!
+
+		$$\vec{a}\cdot\vec{b} = |\vec{a}||\vec{b}|\cos(\theta)$$
+		
+		$$\vec{a}\cdot\vec{a} = |\vec{a}|^2$$		
+		
+		\item Start with what you want to prove - \textbf{draw a diagram}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\textbf{Problem: } Prove the cosine rule.
+	\vspace{5cm}
 \end{frame}
 
 \section{Complex numbers}
@@ -307,6 +351,10 @@
 		\item $z_1/z_2 = \dfrac{r_1}{r_2}\mathrm{cis}(\theta_1 - \theta_2)$
 		\item $z^n = r^n \mathrm{cis}(n\theta) \quad \leftarrow \quad \text{De Moivre's Theorem}$
 	\end{itemize}
+	
+	Importantly for the \textbf{conjugate}, we have:
+	
+	$$z = r\mathrm{cis}(\theta) \Rightarrow \overline{z} = r\mathrm{cis}(-\theta)$$
 \end{frame}
 
 \begin{frame}
@@ -328,10 +376,16 @@
 \begin{frame}
 	\textbf{Quadratics: } we typically \textbf{complete the square}... best shown by example.
 	\\~\\
-	Factorise $z^2 + 3z + 4$
+	Factorise $z^2 + 2z + 5$
 	\vspace{5cm}
 	\\
 	For higher order polynomials typically you'll need to use the \textbf{remainder theorem} to reduce to a quadratic
+\end{frame}
+
+\begin{frame}
+	\textbf{Conjugate factor theorem}\\~\\
+	If the polynomial $P(z)$ has \textbf{real coefficients} and $P(\alpha) = 0$ where $\alpha \in \mathbb{C}$, then $P(\overline{\alpha}) = 0$ also.\\~\\
+	I.e. if $(z - \alpha)$ is a factor, then so is $(z - \overline{\alpha})$
 \end{frame}
 
 \begin{frame}
@@ -367,7 +421,7 @@
 \end{frame}
 
 \begin{frame}
-	\textbf{Example:} find the fourth roots of unity.
+	\textbf{Example:} find the sixth roots of unity.
 	\vspace{5cm}
 \end{frame}
 
@@ -576,6 +630,104 @@ We seek their \textbf{derivatives...}
 
 \textbf{Example: } $\displaystyle\int \sin^2(x)\cos^2(x) \d x$
 
+\end{frame}
+
+\begin{frame}{Other integration techniques}
+    \textbf{Partial fractions..}\\~\\
+    Typically used to integrate rational functions of the form $P(x)/Q(x)$ with $(\text{degree of P}) < (\text{degree of Q)}$\\~\\
+    \textit{In the denominator...}
+    \begin{itemize}
+        \item Linear term $(ax+b)$ $\Rightarrow$ $\dfrac{A}{ax+b}$
+        \item Repeated linear term $(ax+b)^n$ $\Rightarrow$ $\dfrac{A_1}{ax+b} + ... + \dfrac{A_n}{(ax+b)^n}$
+        \item Quadratic linear term $ax^2+bx+c$ $\Rightarrow$ $\dfrac{Ax+B}{ax^2 + bx + c}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Other integration techniques}
+    \textbf{Problem: }\\~\\
+    $$\int \dfrac{1}{(x^2 + 3x + 2)} \d x = \int \dfrac{1}{(x+2)(x+1)} \d x$$
+    \vspace{5cm}
+\end{frame}
+
+\begin{frame}{Other integration techniques}
+    \textbf{Problem: }\\~\\
+    Find $\dfrac{d}{dx} x\ln x$. Using the result, compute $\displaystyle\int \ln x \d x$
+    \vspace{5cm}
+\end{frame}
+
+\begin{frame}{Interesting problem}
+    Compute $\dfrac{d}{dx} (\sin(x))^x$
+    \vspace{5cm}
+\end{frame}
+
+\begin{frame}{Applications of integration}
+\begin{itemize}
+	\item A \textbf{very} cliche application of integration is to find areas
+	\item $\displaystyle \int f(x) \d x$ can be interpreted as the (signed) area bound by $f(x)$ and the $x$-axis.
+	\item This is understood generally according the \textbf{Riemann} sense of the integral\\
+	$$ \int_a^b f(x) \d x := \lim_{n\to\infty} \left[\sum_{k = 1}^n f(x_k) \Delta_k\right]$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\includegraphics[width=\linewidth]{img/riemann.png}
+\end{frame}
+
+\begin{frame}{Volumes}
+	Consider rotating a graph $f(x)$ about the $x$-axis by $2\pi$ rads.
+	\begin{center}
+	\includegraphics[width = 0.65\linewidth]{img/rotation.jpg}
+	\end{center}
+	
+	Each 'disk' has a volume
+	$$ \Delta V = \pi r^2 h = \pi(f(x))^2\Delta x$$
+\end{frame}
+
+\begin{frame}{Volumes}
+	And so\\~\\
+	\begin{align*}
+		\text{volume of revolution} &= \lim_{n \to \infty} \sum_{1 \le k \le n} \pi (f(x))^2 \Delta x_k	\\
+		&= \pi \int_a^b (f(x))^2 \d x
+	\end{align*}
+	\\~\\
+	Thus, we have the general formula for the volume generated by rotating $y = f(x)$ by $2\pi$ rad around the $x$-axis:
+	
+	$$V = \pi \int_a^b y^2 dx$$
+\end{frame}
+
+\begin{frame}{Volumes}
+	\textbf{Problem: } calculate the volume of the solid generated by rotating $y = x^2, 1\le x \le 2$, about the $x$-axis by $2\pi$ rad.
+	\vspace{5cm}
+\end{frame}	
+
+\begin{frame}{Arc length}
+	\textbf{Ever wondered how long a curve is?}\\~\\
+	Here's our chance.
+	
+	Define a little piece of $x$ $\Rightarrow$ $\d x$\\
+	... and a little piece of corresponding $y$-ness $\Rightarrow$ $\d y = f'(x) \d x$
+	\\~\\
+	Thus, by Pythagoras' theorem we have
+	
+	$$d\ell = \sqrt{dx^2 + dy^2}$$
+\end{frame}
+
+\begin{frame}{Arc length}
+	And thus...
+	
+	\begin{align*}
+		d\ell &= \sqrt{dx^2 + dy^2}\\
+		\Rightarrow \dfrac{d\ell}{dx} &= \dfrac{1}{dx}\sqrt{dx^2 + dy^2}\\
+		\Rightarrow \dfrac{d\ell}{dx} &= \sqrt{1 + \left(\dfrac{dy}{dx}\right)^2}\\
+		\Rightarrow L &= \int_{x = a}^{x = b} d\ell\\
+		&= \int_a^b \sqrt{1 + \left(\dfrac{dy}{dx}\right)^2} dx
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Arc length}
+	Thus the \textbf{arc length} of a curve $y = f(x)$ between $x = a$ and $x = b$ is given by the formula
+	
+	$$ L = \int_a^b \sqrt{1 + \left(\dfrac{dy}{dx}\right)^2} dx $$
 \end{frame}
 
 \end{document}
